@@ -5,8 +5,7 @@ const index = ((req,res) => {
   const tag = req.params.tag
   const tagPosts = posts
   if(tag){
-  const tagPosts = posts.filter(post => post.tags.includes(tag))
-   return res.json(tagPosts)
+   tagPosts = posts.filter(post => post.tags.includes(tag))
   }
     return res.json(tagPosts)
   })
