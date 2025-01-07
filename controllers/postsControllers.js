@@ -2,11 +2,8 @@
 const posts = require('../data/posts')
 
 const index = ((req,res) => {
-  const tag = req.params.tag
-  const tagPosts = posts
-  if(tag){
-   tagPosts = posts.filter(post => post.tags.includes(tag))
-  }
+  const tag = req.query.tag
+  let tagPosts = tag ? posts.filter(post => post.tags.includes(tag)) : posts
     return res.json(tagPosts)
   })
 
