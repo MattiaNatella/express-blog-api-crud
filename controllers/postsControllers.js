@@ -1,5 +1,5 @@
 
-const posts = require('../posts')
+const posts = require('../data/posts')
 
 const index = ((req,res) => {
     res.json(posts)
@@ -23,8 +23,34 @@ const modify = (req,res) => {
   }
 
 const destroy = (req,res) => {
-    res.send('Rotta destroy: elimino un post')
+ //estraggo l'elemento dall'array posts 
+  const id = req.params.id
+  //estraggo l'elemento dall'array posts 
+  const post = posts.find( post => post.id == id)
+
+  //se non è presente la pizza con ID passato allora devo restituire errore
+  if(!post){
+    res.status(404)
+    return res.json({
+      message:'Post non trovato',
+      status: '404',
+      errorç: 'not found'
+    })
   }
+
+  posts.splice(posts.indexOf(post), 1)
+
+ console.log(posts)
+
+ return res.json(posts)
+
+
+
+  
+  // if(req.params.id){
+  //   posts.splice(posts.indexOf(req.param.id, 1))
+  }
+  
 
 
   module.exports = {
