@@ -8,8 +8,19 @@ const index = ((req,res) => {
   })
 
 const show =  (req,res) => {
-    const singlePost = posts.find( post => post.title == req.params.title)
-    res.json(singlePost)
+  const title = req.params.title
+  const singlePost = posts.find( post => post.title == req.params.title)
+  if(singlePost){
+     return res.json(singlePost)
+  } else {
+    res.status(404)
+    return res.json({
+      message:"Post non trovato",
+      status: "404",
+      error: "not found"
+    })
+  }
+
   }
 
 const store = (req,res) => {
@@ -30,7 +41,7 @@ const destroy = (req,res) => {
   //estraggo l'elemento dall'array posts 
   const post = posts.find( post => post.id == id)
 
-  //se non è presente la pizza con ID passato allora devo restituire errore
+  //se non è presente il post con ID passato allora devo restituire errore
   if(!post){
     res.status(404)
     return res.json({
