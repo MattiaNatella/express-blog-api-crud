@@ -36,35 +36,27 @@ const modify = (req,res) => {
   }
 
 const destroy = (req,res) => {
- //estraggo l'elemento dall'array posts 
+
   const id = req.params.id
   //estraggo l'elemento dall'array posts 
   const post = posts.find( post => post.id == id)
 
   //se non è presente il post con ID passato allora devo restituire errore
-  if(!post){
-    res.status(404)
-    return res.json({
-      message:'Post non trovato',
-      status: '404',
-      errorç: 'not found'
-    })
-  }
+   if(!post){
+     res.status(404)
+     return res.json({
+       message:'Post non trovato',
+       status: '404',
+       error: 'not found'
+     })
+   }
 
-  posts.splice(posts.indexOf(post), 1)
-
+ posts.splice(posts.indexOf(post), 1)
  console.log(posts)
 
- return res.json(posts)
-
-
-
-  
-  // if(req.params.id){
-  //   posts.splice(posts.indexOf(req.param.id, 1))
+ res.sendStatus(204)
   }
   
-
 
   module.exports = {
     index,
