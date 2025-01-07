@@ -4,7 +4,7 @@ Express Blog - API CRUD (parte 1)
 
 ### Esercizio
 
-**Milestone 1**
+**Milestone 1***
 Come prima cosa, creiamo un controller per i nostri post, in una cartella `controllers.`
 All’interno, prepariamo tutte le funzioni necessarie e copiamo in ciascuna la logica delle funzioni che attualmente si trovano nel router (al momento restituiscono solo dei messaggi).
 Poi torniamo sul file delle rotte. Qui importiamo le funzioni dichiarate nel controller e le associamo alle varie rotte, come visto in classe.
