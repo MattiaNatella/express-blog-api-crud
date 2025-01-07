@@ -1,37 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const posts = require('../posts')
+const postsController = require('../controllers/postsControllers')
+
 
 
 //index
-router.get('/', (req,res) => {
-  res.json(posts)
-})
+router.get('/', postsController.index)
 
 //show
-router.get('/:title', (req,res) => {
-  const singlePost = posts.find( post => post.title == req.params.title)
-  res.json(singlePost)
-})
+router.get('/:title', postsController.show)
 
 //store
-router.post('/', (req,res) => {
-  res.send('Rotta store: Creo un nuovo post')
-})
+router.post('/', postsController.store)
 
 //update
-router.put('/:id', (req,res) => {
-  res.send('Rotta update: stampo tutti i posts')
-})
+router.put('/:id', postsController.update)
 
 //modify
-router.patch('/:id', (req,res) => {
-  res.send('Rotta modify: stampo tutti i posts')
-})
+router.patch('/:id', postsController.modify)
 
 //destroy
-router.delete('/:id', (req,res) => {
-  res.send('Rotta destroy: stampo tutti i posts')
-})
+router.delete('/:id',postsController.destroy) 
 
 module.exports =  router
