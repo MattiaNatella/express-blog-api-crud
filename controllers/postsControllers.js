@@ -24,8 +24,26 @@ const show =  (req,res) => {
   }
 
 const store = (req,res) => {
-  console.log(req.body)  
-  return res.json(req.body)  
+  console.log(req.body) 
+  
+  //creo un nuovo ID
+  const id = posts.at(-1).id + 1
+
+  //recupero dentro un oggetto i dati inseriti nel body della req
+
+  const newPost = {
+    id,
+    ...req.body
+  }
+
+  //pusho il nuovo oggetto nell'array posts
+  posts.push(newPost)
+
+  //visualizzo nel terminale tutto l'array
+  console.log(posts)
+
+  //Cambio lo status del client e visualizzo il post aggiunto
+  return res.status(201).json(newPost)
   
   }
 
