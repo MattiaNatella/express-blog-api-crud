@@ -8,8 +8,8 @@ const index = ((req,res) => {
   })
 
 const show =  (req,res) => {
-  const title = req.params.title
-  const singlePost = posts.find( post => post.title == title)
+  const id = req.params.id
+  const singlePost = posts.find( post => post.id == id)
   if(singlePost){
      return res.json(singlePost)
   } else {
@@ -24,7 +24,9 @@ const show =  (req,res) => {
   }
 
 const store = (req,res) => {
-    res.send('Rotta store: Creo un nuovo post')
+  console.log(req.body)  
+  return res.json(req.body)  
+  
   }
 
 const update =  (req,res) => {

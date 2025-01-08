@@ -5,6 +5,7 @@ const postsRouters = require('./routers/posts')
 const port = 3000
 
 app.use(express.json())
+
 app.use('/posts', postsRouters)
 
 app.listen(port, () =>{
