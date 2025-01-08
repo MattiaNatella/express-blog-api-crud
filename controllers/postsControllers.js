@@ -42,7 +42,7 @@ const store = (req,res) => {
   //visualizzo nel terminale tutto l'array
   console.log(posts)
 
-  //Cambio lo status del client e visualizzo il post aggiunto
+  //Cambio lo status del client in "Created" e visualizzo il post aggiunto
   return res.status(201).json(newPost)
   
   }
