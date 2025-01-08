@@ -9,7 +9,7 @@ const index = ((req,res) => {
 
 const show =  (req,res) => {
   const title = req.params.title
-  const singlePost = posts.find( post => post.title == req.params.title)
+  const singlePost = posts.find( post => post.title == title)
   if(singlePost){
      return res.json(singlePost)
   } else {
@@ -57,7 +57,6 @@ const destroy = (req,res) => {
  res.sendStatus(204)
   }
   
-
   module.exports = {
     index,
     show,
