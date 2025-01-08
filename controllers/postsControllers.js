@@ -48,7 +48,34 @@ const store = (req,res) => {
   }
 
 const update =  (req,res) => {
-    res.send('Rotta update: aggiorno un post')
+
+  //recupero l'ID del post da modificare
+    const id = req.params.id
+
+  //recupero l'elemento in riferimento all'ID da modificare
+    const post = posts.find(post => post.id == id)
+
+  //modifico le chiavi dell'elemento **BONUS** = verifico se è stato fatto il match, in caso negativo restituisco un errore
+
+  if(!post){
+    res.status(404).json({
+      message: "Post da modificare non trovato",
+      status: "404",
+      error: "not found"
+    })
+  }
+ 
+  //in caso positivo procedo con la modifica delle chiavi
+  Object.keys(req.body).forEach( key => {
+    post[key] = req.body[key]
+  })
+
+  //visualizzo nel terminale tutti i post compreso quello modificato
+  console.log(posts)
+
+  //restituisco il JSON del post modificato
+  return res.json(post)
+
   }
 
 const modify = (req,res) => {
